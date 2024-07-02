@@ -1,0 +1,34 @@
+<block wx:for="{{ messages }}">
+  <view class="chat-comment-assistant">
+    <block wx:if="{{ item.role == 'assistant' }}">
+      <view class="top">
+        <image class="face" src="img/bot.png"></image>
+      </view>
+      <view class="bot">
+        <text class="bot-text">{{ item.content }}</text>
+      </view>
+    </block>
+  </view>
+
+    <view class="chat-comment-user">
+      <block wx:if="{{item.role == 'user'}}">
+        <view class="top-right">
+          <view></view>
+          <view>
+            <image class="face-right" src="img/user.png"></image>
+          </view>
+        </view>
+        <view class="bot-right">
+          <text class="user-text">{{item.content}}</text>
+        </view>
+      </block>
+    </view>
+</block>
+<view class="blank-view"></view>
+<view class="pub-comment">
+  <view class="pub-left">
+    <input class="pub-input" placeholder="{{plcaceHolder}}" value="{{ question }}" bindinput="updateQuestion"></input>
+  </view>
+
+  <view class="pub-button" bind:tap="sendMessage">发送</view>
+</view>
